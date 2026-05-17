@@ -34,12 +34,14 @@ ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'portal',
 ]
 
@@ -119,8 +121,30 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
-MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Полностью удаляем блок STATICFILES_DIRS, так как Django сам найдет папку portal/static
+
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# 2. Главное: указываем точный путь к вашей вложенной папке статики
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'portal', 'static'),
+]
+# Настройки Cloudinary (строго ваши ключи)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'djwxlhp58',
+    'API_KEY': '868428627972395',
+    'API_SECRET': '1RQIxHLrRhlAhZBgRWdlX0cJGEE'  # Замените на ваш секретный ключ
+}
+
+# Уберите знак # в начале этой строки:
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
