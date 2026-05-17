@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "имя_вашего_проекта/wsgi.py",
+      "src": "azbuka/wsgi.py",
       "use": "@vercel/python",
       "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
     }
