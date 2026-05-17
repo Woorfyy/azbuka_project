@@ -1,0 +1,64 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}О нас {% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'portal/css/contact.css' %}">
+{% endblock %}
+{% block content %}
+
+    <!-- Header (2) -->
+    <!-- Контактные данные -->
+    <div class="contactAllStart" style="margin-top: 80px;">Наши контакты</div>
+    <div class="containerContactMap">
+        <div class="containerContactAll">
+            <div class="containerAdres">
+                <p><b>Адрес главного офиса</b> <br> <br>Приморский край, г. Лесозаводск, 690005, ул. Пушкинская 2
+                    </p>
+            </div>
+            <div class="containerNumber">
+                <p><b style="font-size: 16px;">Номер телефона</b><br> <br>8 800 242-20-2</p>
+            </div>
+            <div class="containerTelegram">
+                <div class="iconTelegram"> <img src="../static/portal/img/telegram.png" alt="" width="100%" height="100%">
+                </div>
+                <div class="containerTelegramText">
+                    <p><b style="font-size: 16px;"> Наш телеграмм</b> <br><br>@AzbukaMebeliLes</p>
+                </div>
+            </div>
+        </div>
+        <div class="containerMap">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9412.517543488113!2d133.38302600458536!3d45.46258761020541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5e54ecaeceee610b%3A0x48f1c64d935a21d9!2z0JDQt9Cx0YPQutCwINCc0LXQsdC10LvQuA!5e0!3m2!1sru!2sru!4v1749119200459!5m2!1sru!2sru"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+
+
+ <!-- footer -->
+  <div class="footer">
+    <div class="footerContainer">
+      <!-- 1 -->
+      <div class="footerBlock" style="display: block;">
+        <div class="footerLogo"> <img src="../static/portal/img/logo.png" width="100%" height="100%" alt=""></div>
+        <div class="block_footer"><a class="a_footer" href="" style="color: white;">Контакты</a></div>
+        <div class="block_footer"><a class="a_footer" href="" style="color: white;">О нас</a></div>
+        <div class="block_footer"><a class="a_footer" href="" style="color: white;">Политика конфиденциальности</a></div>
+        <div class="block_footer"></div>
+
+      </div>
+      <!-- 2 -->
+      <div class="footerBlock"
+        style="display: flex; color: white; align-items: center; text-align: center; justify-content: center;">
+        <p style="font-size: 23px;">Азбука Мебели — российская компания, специализирующаяся на производстве и продаже
+          современной мебели для дома и офиса. Компания предлагает широкий ассортимент продукции, сочетающей качество,
+          стиль и доступные цены.</p>
+      </div>
+      <!-- 3 -->
+      <div class="footerBlock" style="display: flex; align-items:last baseline;">
+        <div class="copirait">(© Азбука мебели, 2026)</div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

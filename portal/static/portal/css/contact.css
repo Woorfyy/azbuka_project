@@ -1,0 +1,146 @@
+.contactAllStart {
+    font-size: 35px;
+    margin-top: 200px;
+    margin-left: 115px;
+    width: 30%;
+    height: 50px;
+    /* background-color: #000; */
+}
+
+
+.containerContactMap {
+    display: flex;
+    margin-left: 115px;
+    margin-top: 100px;
+    width: 87%;
+    height: 500px;
+    /* background-color: #0056b3; */
+}
+
+
+.containerContactAll {
+    width: 28%;
+    height: 500px;
+    display: block;
+    /* background-color: #FEC01B; */
+}
+
+
+.containerMap {
+    border: 1px solid black;
+    margin-left: 10px;
+    width: 70%;
+    height: 500px;
+    /* background-color: aqua; */
+}
+
+.containerAdres {
+    box-sizing: border-box;
+    padding-left: 40px;
+    padding-top: 20px;
+    width: 100%;
+    height: 130px;
+    margin-top: 15%;
+    background-color: #ECEFF1
+}
+
+.containerNumber {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 40px;
+    padding-top: 20px;
+    height: 130px;
+    font-size: 23px;
+    margin-top: 10px;
+    background-color: #ECEFF1;
+}
+
+.containerTelegram {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #ECEFF1;
+}
+
+.containerTelegramText {
+    width: 67%;
+    box-sizing: border-box;
+    font-size: 21px;
+    padding-left: 20px;
+    padding-top: 20px;
+    height: 120px;
+    margin-left: 15px;
+    background-color: #ECEFF1;
+}
+
+.iconTelegram {
+    width: 20%;
+    display: flex;
+    height: 70px;
+    margin-left: 23px;
+    /* background-color: gainsboro; */
+}
+
+@media (max-width: 768px) {
+    .contactAllStart {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 40px;
+        height: auto;
+        text-align: center;
+        font-size: 26px;
+    }
+
+    .containerContactMap {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        margin-top: 30px;
+        gap: 20px;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .containerContactAll,
+    .containerMap {
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+    }
+
+    .containerMap {
+        height: 350px;
+    }
+
+    .containerAdres {
+        margin-top: 0;
+    }
+
+    .containerAdres,
+    .containerNumber {
+        height: auto;
+        padding: 20px;
+    }
+
+    .containerTelegram {
+        height: auto;
+        padding: 15px 20px;
+    }
+
+    .containerTelegramText {
+        width: auto;
+        height: auto;
+        padding: 0;
+        margin-left: 15px;
+        font-size: 18px;
+    }
+
+    .iconTelegram {
+        width: 50px;
+        height: 50px;
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,94 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'portal/css/furniture.css' %}">
+{% endblock %}
+{% block title %}О нас {% endblock %}
+{% block content %}
+
+      <div class="containerProducts">
+                <div class="categories">
+                        <div class="sofaСategories"><a class="category-link" data-target="Д" href="#">Диваны</a></div>
+                        <div class="kitchenСategories"><a class="category-link" data-target="КХ" href="#">Кухонные гарнитуры</a></div>
+                        <div class="closetСategories"><a class="category-link" data-target="Ш" href="#">Шкафы</a></div>
+                        <div class="bedСategories"><a class="category-link" data-target="КР" href="#">Кровати</a></div>
+                        <div class="tableСategories"><a class="category-link" data-target="С" href="#">Столы</a></div>
+                        <div style="margin-top: 25px;"><a class="category-link" data-target="all" href="#">Показать все</a></div>
+                </div>
+
+                <div class="containerBlockProducts">
+                        <div class="nameSelector" id="category-title">Все товары</div>
+
+                        <div class="SectorblockProduct">
+
+                                {% for mebel in mebels %}
+                                    <div class="blockProduct" data-category="{{ mebel.category }}">
+                                        <div class="productImage">
+                                            {% if mebel.image %}
+                                                <img src="{{ mebel.image.url }}" alt="" width="100%" height="100%">
+                                            {% endif %}
+                                        </div>
+                                        <div class="productTextName">{{ mebel.title }}</div>
+                                        <div class="productArt">
+                                            <p> {{ mebel.description|truncatechars:200 }} <br> В наличии: <span> {{ mebel.get_availability_display|truncatechars:10 }} </span> </p>
+                                        </div>
+                                        <div class="ProductCen">{{ mebel.price|truncatechars:10 }} ₽</div>
+                                    </div>
+                                {% endfor %}
+                                  </div>
+                </div>
+      </div>
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.category-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetCategory = this.getAttribute('data-target');
+        const cards = document.querySelectorAll('.blockProduct');
+
+        document.getElementById('category-title').innerText = this.innerText;
+
+        cards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+
+            if (targetCategory === 'all' || cardCategory === targetCategory) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+                                 <!-- footer -->
+  <div class="footer">
+    <div class="footerContainer">
+      <!-- 1 -->
+      <div class="footerBlock" style="display: block;">
+        <div class="footerLogo"> <img src="../static/portal/img/logo.png" width="100%" height="100%" alt=""></div>
+        <div class="block_footer"><a class="a_footer" href="" style="color: white;">Контакты</a></div>
+        <div class="block_footer"><a class="a_footer" href="" style="color: white;">О нас</a></div>
+        <div class="block_footer"><a class="a_footer" href="" style="color: white;">Политика конфиденциальности</a></div>
+        <div class="block_footer"></div>
+
+      </div>
+      <!-- 2 -->
+      <div class="footerBlock"
+        style="display: flex; color: white; align-items: center; text-align: center; justify-content: center;">
+        <p style="font-size: 23px;">Азбука Мебели — российская компания, специализирующаяся на производстве и продаже
+          современной мебели для дома и офиса. Компания предлагает широкий ассортимент продукции, сочетающей качество,
+          стиль и доступные цены.</p>
+      </div>
+      <!-- 3 -->
+      <div class="footerBlock" style="display: flex; align-items:last baseline;">
+        <div class="copirait">(© Азбука мебели, 2026)</div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

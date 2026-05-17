@@ -1,0 +1,244 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}Главная{% endblock %}
+{% block content %}
+<div class="title">
+    <div class="titleText">
+      <p style="font-size: 20px;">Магазин мебели для вашего дома. <br> Мы продаём мебель отличного качества по всей
+        стране, сделанную на <b>наших заводах!</b></p>
+    </div>
+</div>
+<div class="whyUs">
+    <p>Почему выбирают <b>нас ?</b></p>
+    <div class="arrow"><img src="../static/portal/img/arrow_button_right.png" width="100%" height="100%" alt=""></div>
+</div>
+<div class="containerwhyUs">
+    <!-- 1 -->
+    <div class="advantagesCont">
+      <div class="adventageImg"><img src="../static/portal/img/preim.jpg" height="100%" width="100%" alt=""></div>
+      <div class="adventageText">
+        <p><b style="font-size: 22px;">Высокое качество и разумная цена</b><br><br>Мы предлагаем качественную мебель по
+          разумным ценам. Наши изделия отличаются высоким качеством и долговечностью, а доступные цены делают комфорт и
+          стиль доступными для каждого. Выбирая нас, вы получаете лучшее соотношение цена-качество! </p>
+      </div>
+    </div>
+    <div class="skip"></div>
+    <!-- 2 -->
+    <div class="advantagesCont">
+      <div class="adventageImg"><img src="../static/portal/img/sborshik.jpg" height="100%" width="100%" alt=""></div>
+      <div class="adventageText">
+        <p><b style="font-size: 22px;">Высокая классификация сборщиков</b><br><br><br>Мы гарантируем высокое качество
+          сборки благодаря опытным сборщикам, которые тщательно и профессионально собирают каждую мебель. Это
+          обеспечивает надежность и долговечность наших изделий.</p>
+      </div>
+    </div>
+    <div class="skip"></div>
+    <!-- 3 -->
+    <div class="advantagesCont">
+      <div class="adventageImg"><img src="../static/portal/img/proekt.jpg" height="100%" width="100%" alt=""></div>
+      <div class="adventageText">
+        <p><b style="font-size: 22px;">Отдельный подход и создание проекта</b><br><br>Мы предлагаем индивидуальный
+          подход к каждому покупателю и профессиональное составление проекта интерьера. Наши опытные специалисты помогут
+          подобрать качественную мебель по разумной цене, учитывая все ваши пожелания и особенности пространства.</p>
+      </div>
+    </div>
+</div><br><br><br>
+<h2 class="h" id="about">О НАШЕМ МАГАЗИНЕ</h2>
+<div class="about">
+    <img src="../static/portal/img/lesozavodsk.jpg">
+    <h5>«Азбука мебели» — это сеть мебельных супермаркетов, предлагающая огромный выбор мебели для вашего дома по демократичным ценам.
+        <br><br><br>
+        Мы рады предложить вам современную мягкую и корпусную мебель на любой вкус.
+        Все: от шкафа и стола до гостиной и кухни! Мы работаем с лучшими российскими и зарубежными поставщиками.
+        В магазинах «Азбука мебели» вы можете не только купить готовую модель, но и заказать мягкую мебель,
+        выбрав любую понравившуюся ткань для обивки из каталогов.</h5>
+</div>
+
+{% if user.is_authenticated %}
+<div class="containerBlockProduct" id="products">
+                        <!-- секторы и товары -->
+                        <!-- 1 -->
+                        <div class="nameSelector">Популярыне товары</div>
+                        <div class="SectorblockProduct">
+                                <div class="blockProduct">
+                                        <div class="productImage"><img src="../static/portal/img/vega.webp" alt="" width="100%"
+                                                        height="100%"></div>
+                                        <div class="productTextName">Диван ВЕГА-10</div>
+                                        <div class="productArt">
+                                                <p> Артикул: 195675  </p>
+                                        </div>
+                                        <div class="ProductCen">27 690 ₽</div>
+
+                                </div>
+
+                                <!-- 2 -->
+                                <div class="blockProduct">
+                                        <div class="productImage"><img src="../static/portal/img/zasmin.webp" alt="" width="100%"
+                                                        height="100%"></div>
+                                        <div class="productTextName">Диван ЖАСМИН</div>
+                                        <div class="productArt">
+                                                <p> Артикул: 176900  </p>
+                                        </div>
+                                        <div class="ProductCen">40 230 ₽</div>
+
+                                </div>
+                                <!-- 3 -->
+                                <div class="blockProduct">
+                                        <div class="productImage"><img src="../static/portal/img/ritm.webp" alt="" width="100%"
+                                                        height="100%"></div>
+                                        <div class="productTextName">Диван РИТМ</div>
+                                        <div class="productArt">
+                                                <p> Артикул: 156789  </p>
+                                        </div>
+                                        <div class="ProductCen">33 990 ₽</div>
+
+                                </div>
+                        </div>
+                        <!-- 4 -->
+                        <div class="SectorblockProduct">
+                                <div class="blockProduct">
+                                        <div class="productImage"><img src="../static/portal/img/erik.jpg" alt="" width="100%"
+                                                        height="100%"></div>
+                                        <div class="productTextName">Диван ЭРИК</div>
+                                        <div class="productArt">
+                                                <p> Артикул: 225467  </p>
+                                        </div>
+                                        <div class="ProductCen">34 590 ₽</div>
+
+                                </div>
+                                <!-- 5 -->
+                                <div class="blockProduct">
+                                        <div class="productImage"><img src="../static/portal/img/malish.webp" alt="" width="100%"
+                                                        height="100%"></div>
+                                        <div class="productTextName">Диван МАЛЫШ-3</div>
+                                        <div class="productArt">
+                                                <p> Артикул: 198754  </p>
+                                        </div>
+                                        <div class="ProductCen">34 590 ₽</div>
+
+                                </div>
+                                <!-- 6 -->
+                                <div class="blockProduct">
+                                        <div class="productImage"><img src="../static/portal/img/argo1.jpg" alt="" width="100%"
+                                                        height="100%"></div>
+                                        <div class="productTextName">Диван АРГО-1</div>
+                                        <div class="productArt">
+                                                <p> Артикул: 185665  </p>
+                                        </div>
+                                        <div class="ProductCen">36 890 ₽</div>
+
+                                </div>
+                        </div>
+                        <!-- 7 -->
+                        <div class="SectorblockProduct">
+                                <div class="blockProduct">
+                                        <div class="productImage"><img src="../static/portal/img/parma1.webp" alt="" width="100%"
+                                                        height="100%"></div>
+                                        <div class="productTextName">Диван ПАРМА-1</div>
+                                        <div class="productArt">
+                                                <p> Артикул: 189065  </p>
+                                        </div>
+                                        <div class="ProductCen">37 290 ₽</div>
+
+                                </div>
+                                <!-- 8 -->
+                                <div class="blockProduct">
+                                        <div class="productImage"><img src="../static/portal/img/rio.webp" alt="" width="100%"
+                                                        height="100%"></div>
+                                        <div class="productTextName">Диван РИО</div>
+                                        <div class="productArt">
+                                                <p> Артикул: 167894  </p>
+                                        </div>
+                                        <div class="ProductCen">37 390 ₽</div>
+
+                                </div>
+                                <!-- 9 -->
+                                <div class="blockProduct">
+                                        <div class="productImage"><img src="../static/portal/img/agat.webp" alt="" width="100%"
+                                                        height="100%"></div>
+                                        <div class="productTextName">Диван АГАТ</div>
+                                        <div class="productArt">
+                                                <p> Артикул: 186785   </p>
+                                        </div>
+                                        <div class="ProductCen">38 490 ₽</div>
+
+                                </div>
+                        </div>
+</div>
+{% else %}
+<br>
+<h2 style="margin-left: 115px; font-size: 30px;" id="register">Чтобы посмотреть товары нужно <span style="color: #0157a2">зарегистрироваться</span></h2>
+<br><br>
+<form class="register_vhod" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="register">Зарегистрироваться</button>
+</form>
+    <br><br>
+<form class="register_vhod " method="post">
+    {% csrf_token %}
+    <h2 style="font-size: 30px;">Есть аккаунт? <span style="color: #0157a2">Авторизация</span></h2><br><br>
+    <div style="display: flex; flex-direction: column; margin-bottom: 15px;">
+        <label>Логин</label><br>
+        <input class="register_input" type="text" name="username" placeholder="Введите логин"><br>
+        <label>Пароль</label><br>
+        <input class="register_input" type="password" name="password" placeholder="Введите пароль">
+    </div>
+    <button type="submit" name="login">Войти</button>
+</form><br>
+{% if error_login %}
+    <p style="color: red;">{{ error_login }}</p>
+{% endif %}
+{% endif %}
+
+<!-- Контактные данные -->
+  <div class="contactAllStart" id="contact">Наши контакты</div>
+  <div class="containerContactMap">
+    <div class="containerContactAll">
+      <div class="containerAdres">
+        <p><b>Адрес главного офиса</b> <br> <br>Приморский край, г. Лесозаводск, 690005, ул. Пушкинская 2 </p>
+      </div>
+      <div class="containerNumber">
+        <p><b style="font-size: 16px;">Номер телефона</b><br> <br>8 800 242-20-2</p>
+      </div>
+      <div class="containerTelegram">
+        <div class="iconTelegram"> <img src="../static/portal/img/telegram.png" alt="" width="100%" height="100%"> </div>
+        <div class="containerTelegramText">
+          <p><b style="font-size: 16px;"> Наш телеграмм</b> <br><br>@AzbukaMebeliLes</p>
+        </div>
+      </div>
+    </div>
+    <div class="containerMap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9412.517543488113!2d133.38302600458536!3d45.46258761020541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5e54ecaeceee610b%3A0x48f1c64d935a21d9!2z0JDQt9Cx0YPQutCwINCc0LXQsdC10LvQuA!5e0!3m2!1sru!2sru!4v1749119200459!5m2!1sru!2sru"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <div class="footerContainer">
+      <!-- 1 -->
+      <div class="footerBlock" style="display: block;">
+        <div class="footerLogo"> <img src="../static/portal/img/logo.png" width="100%" height="100%" alt=""></div>
+        <div class="block_footer"><a class="a_footer" href="" style="color: white;">Контакты</a></div>
+        <div class="block_footer"><a class="a_footer" href="" style="color: white;">О нас</a></div>
+        <div class="block_footer"><a class="a_footer" href="" style="color: white;">Политика конфиденциальности</a></div>
+        <div class="block_footer"></div>
+
+      </div>
+      <!-- 2 -->
+      <div class="footerBlock"
+        style="display: flex; color: white; align-items: center; text-align: center; justify-content: center;">
+        <p style="font-size: 23px;">Азбука Мебели — российская компания, специализирующаяся на производстве и продаже
+          современной мебели для дома и офиса. Компания предлагает широкий ассортимент продукции, сочетающей качество,
+          стиль и доступные цены.</p>
+      </div>
+      <!-- 3 -->
+      <div class="footerBlock" style="display: flex; align-items:last baseline;">
+        <div class="copirait">(© Азбука мебели, 2026)</div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

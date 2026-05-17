@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Азбука мебели{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'portal/css/style.css' %}">
+    {% block styles %}{% endblock %}
+</head>
+<header>
+    <div class="menu">
+        <a href="{% url 'index' %}"><img src="../static/portal/img/logo.png" class="logo"></a>
+        {% if user.is_authenticated %}
+        <span style="font-size: 25px; color: black; align-content: center; color: white;">Привет, {{ user.username }}</span>
+            <a href="{% url 'about_us' %} " style="color: white;"><buttom> О НАС</buttom></a>
+            <a href="{% url 'furniture' %}" style="color: white;"><buttom>МЕБЕЛЬ</buttom></a>
+            <a href="{% url 'contact' %}" style="color: white;"><buttom>КОНТАКТЫ</buttom></a>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="logout" type="submit" style="color: white;">ВЫЙТИ</button>
+            </form>
+        {% else %}
+            <a href="{% url 'about_us' %}"  style="color: white;"><buttom>О НАС</buttom></a>
+            <a href="{% url 'contact' %}"  style="color: white;"><buttom>КОНТАКТЫ</buttom></a>
+            <a href="#register"  style="color: white;"><buttom>РЕГИСТРАЦИЯ/ВОЙТИ</buttom></a>
+        {% endif %}
+    </div>
+</header>
+<body>
+
+    {% block content %}
+    {% endblock %}
+
+
+</body>
+
+</html>
