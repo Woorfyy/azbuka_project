@@ -79,7 +79,6 @@ WSGI_APPLICATION = 'azbuka.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-DATABASE_URL = os.environ.get('DATABASE_URL')
 if os.getenv('DATABASE_URL'):
     DATABASES = {
     'default': dj_database_url.config(
@@ -127,8 +126,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
@@ -136,21 +133,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Путь к вашей папке со стилями в приложении portal
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'portal', 'static'),
-]
+# Полностью удаляем блок STATICFILES_DIRS, так как Django сам найдет папку portal/static
 
-# Включаем WhiteNoise для сжатия и раздачи CSS
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Настройки Cloudinary (пока просто оставляем, чтобы не было ошибок)
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'djwxlhp58',
-    'API_KEY': '868428627972395',
-    'API_SECRET': '1RQIxHLrRhlAhZBgRWdlX0cJGEE'
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# 2. Главное: указываем точный путь к вашей вложенной папке статики
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'portal', 'static'),
+]
+# Настройки Cloudinary (строго ваши ключи)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'djwxlhp58',
+    'API_KEY': '868428627972395',
+    'API_SECRET': '1RQIxHLrRhlAhZBgRWdlX0cJGEE'  # Замените на ваш секретный ключ
+}
+
+# Уберите знак # в начале этой строки:
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
