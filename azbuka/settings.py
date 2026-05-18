@@ -14,6 +14,7 @@ from pathlib import Path
 import dj_database_url
 import os
 
+from django.template import Engine
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,7 +48,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -78,15 +78,23 @@ WSGI_APPLICATION = 'azbuka.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
-DATABASES = {
+if os.getenv('DATABASE_URL'):
+    DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get('DATABASE_URL'),
         conn_max_age=600,
         ssl_require=True,
     )
 }
+else:
+    DATABASES={
+        'default':{
+            'ENGINE':'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
 
+
+        }
+    }
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
@@ -117,6 +125,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
@@ -125,7 +135,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Полностью удаляем блок STATICFILES_DIRS, так как Django сам найдет папку portal/static
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'portal', 'static'),
+]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -134,9 +146,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 2. Главное: указываем точный путь к вашей вложенной папке статики
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'portal', 'static'),
-]
+
 # Настройки Cloudinary (строго ваши ключи)
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'djwxlhp58',
@@ -146,5 +156,4 @@ CLOUDINARY_STORAGE = {
 
 # Уберите знак # в начале этой строки:
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
