@@ -14,7 +14,7 @@ from pathlib import Path
 import dj_database_url
 import os
 
-from django.template import Engine
+#from django.template import Engine
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -130,22 +130,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Полностью удаляем блок STATICFILES_DIRS, так как Django сам найдет папку portal/static
 
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# 2. Главное: указываем точный путь к вашей вложенной папке статики
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'portal', 'static'),
-]
 # Настройки Cloudinary (строго ваши ключи)
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'djwxlhp58',
@@ -154,6 +143,5 @@ CLOUDINARY_STORAGE = {
 }
 
 # Уберите знак # в начале этой строки:
+STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
