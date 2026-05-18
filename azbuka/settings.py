@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -134,26 +135,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Полностью удаляем блок STATICFILES_DIRS, так как Django сам найдет папку portal/static
+# Путь к вашей папке со стилями в приложении portal
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'portal', 'static'),
 ]
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Включаем WhiteNoise для сжатия и раздачи CSS
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# 2. Главное: указываем точный путь к вашей вложенной папке статики
-
-# Настройки Cloudinary (строго ваши ключи)
+# Настройки Cloudinary (пока просто оставляем, чтобы не было ошибок)
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'djwxlhp58',
     'API_KEY': '868428627972395',
-    'API_SECRET': '1RQIxHLrRhlAhZBgRWdlX0cJGEE'  # Замените на ваш секретный ключ
+    'API_SECRET': '1RQIxHLrRhlAhZBgRWdlX0cJGEE'
 }
-
-# Уберите знак # в начале этой строки:
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
