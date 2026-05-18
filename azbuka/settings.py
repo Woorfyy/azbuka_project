@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
     'django.contrib.admin',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -77,6 +79,7 @@ WSGI_APPLICATION = 'azbuka.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
+DATABASE_URL = os.environ.get('DATABASE_URL')
 if os.getenv('DATABASE_URL'):
     DATABASES = {
     'default': dj_database_url.config(
@@ -132,18 +135,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Путь к вашей папке со стилями в приложении portal
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'portal', 'static'),
 ]
 
-# Настройки Cloudinary только для картинок товаров
+# Включаем WhiteNoise для сжатия и раздачи CSS
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Настройки Cloudinary (пока просто оставляем, чтобы не было ошибок)
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'djwxlhp58',
     'API_KEY': '868428627972395',
     'API_SECRET': '1RQIxHLrRhlAhZBgRWdlX0cJGEE'
 }
-
-# Включаем облако только для медиа-файлов
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -4,7 +4,10 @@
     {
       "src": "azbuka/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.9"
+      }
     }
   ],
   "routes": [
@@ -16,5 +19,9 @@
       "src": "(.*)",
       "dest": "azbuka/wsgi.py"
     }
-  ]
+  ],
+  "projectSettings": {
+    "framework": null,
+    "buildCommand": "python manage.py collectstatic --noinput"
+  }
 }
