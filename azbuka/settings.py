@@ -127,18 +127,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Для Django 4.2+ (у тебя 6.0) - добавь это:
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Cloudinary только для медиа
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'djwxlhp58',
-    'API_KEY': '868428627972395',
-    'API_SECRET': '1RQIxHLrRhlAhZBgRWdlX0cJGEE'
+    'CLOUD_NAME': 'CLOUDINARY_CLOUD_NAME',
+    'API_KEY': 'CLOUDINARY_API_KEY',
+    'API_SECRET': 'CLOUDINARY_API_SECRET'
 }
 
 # Медиа файлы через Cloudinary
