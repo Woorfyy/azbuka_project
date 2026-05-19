@@ -23,8 +23,8 @@ ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.staticfiles',
     'cloudinary_storage',
+    'django.contrib.staticfiles',
     'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -132,9 +132,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Cloudinary только для медиа
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'CLOUDINARY_CLOUD_NAME',
-    'API_KEY': 'CLOUDINARY_API_KEY',
-    'API_SECRET': 'CLOUDINARY_API_SECRET'
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),      # ← Было: 'CLOUDINARY_CLOUD_NAME'
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),            # ← Было: 'CLOUDINARY_API_KEY'
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET')       # ← Было: 'CLOUDINARY_API_SECRET'
 }
 
 # Медиа файлы через Cloudinary
